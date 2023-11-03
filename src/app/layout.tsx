@@ -9,8 +9,8 @@ export const metadata = {
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="pt-BR">
-    <body className={inter.variable}>{children}</body>
+  <html className={inter.variable} lang="pt-BR">
+    <body>{children}</body>
   </html>
 )
 
