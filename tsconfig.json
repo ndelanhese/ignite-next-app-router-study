@@ -34,7 +34,10 @@
         "./src/components/*"
       ],
       "@env": [
-        "./env.ts"
+        "./env"
+      ],
+      "@api": [
+        "./src/service/api.ts"
       ]
     }
   },
