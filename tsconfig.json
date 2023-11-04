@@ -27,7 +27,7 @@
       "@/*": [
         "./src/*"
       ],
-      "@types/*": [
+      "@global-types/*": [
         "./src/types/*"
       ],
       "@components/*": [

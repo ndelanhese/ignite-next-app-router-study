@@ -1,20 +1,19 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { getFeaturedProducts } from './api'
+import { nanoid } from 'nanoid'
 
 const Home = async () => {
-  const products = await getFeaturedProducts()
-
-  console.log(products)
+  const [highlightedProduct, ...otherProducts] = await getFeaturedProducts()
 
   return (
     <main className="grid-rows-9 grid max-h-[51rem] grid-cols-9 gap-6">
       <NextLink
-        href="/"
+        href={`/products/${highlightedProduct.slug}`}
         className="group relative col-span-6 row-span-6 flex items-start justify-center overflow-hidden rounded-lg bg-zinc-800"
       >
         <NextImage
-          src="/moletom-never-stop-learning.png"
+          src={highlightedProduct.image}
           alt=""
           className="transition-transform duration-500 group-hover:scale-105"
           height={920}
@@ -24,57 +23,49 @@ const Home = async () => {
 
         <div className="absolute bottom-28 right-28 flex h-12 max-w-[18rem] items-center justify-center gap-2 rounded-full border border-zinc-500 bg-black/80 p-1 pl-5">
           <span className="truncate text-sm text-zinc-500">
-            Nome do moletom
+            {highlightedProduct.title}
           </span>
           <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
-            R$ 119,90
+            {highlightedProduct.price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}
           </span>
         </div>
       </NextLink>
-      <NextLink
-        href="/"
-        className="group relative col-span-3 row-span-3 flex items-start justify-center overflow-hidden rounded-lg bg-zinc-800"
-      >
-        <NextImage
-          src="/moletom-ai-side.png"
-          alt=""
-          className="transition-transform duration-500 group-hover:scale-105"
-          height={920}
-          width={920}
-          quality={100}
-        />
 
-        <div className="absolute bottom-10 right-10 flex h-12 max-w-[18rem] items-center justify-center gap-2 rounded-full border border-zinc-500 bg-black/80 p-1 pl-5">
-          <span className="truncate text-sm text-zinc-500">
-            Nome do moletom
-          </span>
-          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
-            R$ 119,90
-          </span>
-        </div>
-      </NextLink>
-      <NextLink
-        href="/"
-        className="group relative col-span-3 row-span-3 flex items-start justify-center overflow-hidden rounded-lg bg-zinc-800"
-      >
-        <NextImage
-          src="/camiseta-dowhile-2022.png"
-          alt=""
-          className="transition-transform duration-500 group-hover:scale-105"
-          height={920}
-          width={920}
-          quality={100}
-        />
+      {otherProducts?.map((product) => (
+        <NextLink
+          key={nanoid()}
+          href={`/products/${product.slug}`}
+          className="group relative col-span-3 row-span-3 flex items-start justify-center overflow-hidden rounded-lg bg-zinc-800"
+        >
+          <NextImage
+            src={product.image}
+            alt=""
+            className="transition-transform duration-500 group-hover:scale-105"
+            height={920}
+            width={920}
+            quality={100}
+          />
 
-        <div className="absolute bottom-10 right-10 flex h-12 max-w-[18rem] items-center justify-center gap-2 rounded-full border border-zinc-500 bg-black/80 p-1 pl-5">
-          <span className="truncate text-sm text-zinc-500">
-            Nome do moletom
-          </span>
-          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
-            R$ 119,90
-          </span>
-        </div>
-      </NextLink>
+          <div className="absolute bottom-10 right-10 flex h-12 max-w-[18rem] items-center justify-center gap-2 rounded-full border border-zinc-500 bg-black/80 p-1 pl-5">
+            <span className="truncate text-sm text-zinc-500">
+              {product.title}
+            </span>
+            <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
+              {product.price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              })}
+            </span>
+          </div>
+        </NextLink>
+      ))}
     </main>
   )
 }
