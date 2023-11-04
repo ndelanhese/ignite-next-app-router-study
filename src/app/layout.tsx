@@ -10,7 +10,7 @@ export const metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html className={inter.variable} lang="pt-BR">
-    <body>{children}</body>
+    <body className="bg-zinc-950 text-zinc-50 antialiased">{children}</body>
   </html>
 )
 

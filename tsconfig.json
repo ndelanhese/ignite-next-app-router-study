@@ -30,6 +30,9 @@
       "@types/*": [
         "./src/types/*"
       ],
+      "@components/*": [
+        "./src/components/*"
+      ],
     }
   },
   "include": [
