@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: process.env.NEXT_IMAGES_DOMAINS?.split(',') ?? [],
+    domains: process.env.NEXT_PUBLIC_IMAGES_DOMAINS?.split(',') ?? [],
   },
 }
 
