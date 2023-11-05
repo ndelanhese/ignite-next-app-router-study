@@ -1,5 +1,5 @@
 import NextImage from 'next/image'
-import { getFeaturedProducts, getProduct } from './api'
+import { getProduct } from './api'
 import { ProductPageProps } from './page.types'
 import { Metadata } from 'next'
 
