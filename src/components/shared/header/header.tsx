@@ -1,6 +1,7 @@
-import { Search, ShoppingBag } from 'lucide-react'
-import NextLink from 'next/link'
+import { Search } from 'lucide-react'
 import NextImage from 'next/image'
+import NextLink from 'next/link'
+import { CartWidget } from './cartWidget'
 
 export const Header = () => (
   <div className="flex w-full items-center justify-between">
@@ -21,10 +22,7 @@ export const Header = () => (
       </form>
     </div>
     <div className="flex items-center justify-center gap-4">
-      <div className="flex cursor-pointer items-center gap-2">
-        <ShoppingBag className="h-4 w-4" />
-        <span className="text-sm">cart (0)</span>
-      </div>
+      <CartWidget />
       <div className="h-4 w-px bg-zinc-500" />
       <NextLink
         href="/account"

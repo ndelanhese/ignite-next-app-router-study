@@ -2,6 +2,7 @@ import React from 'react'
 import './globals.css'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { env } from '@env'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
     template: '%s | devstore',
     default: 'devstore',
   },
+  metadataBase: new URL(env.APP_BASE_URL),
   twitter: {
     card: 'summary_large_image',
   },

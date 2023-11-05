@@ -2,6 +2,7 @@ import NextImage from 'next/image'
 import { getProduct } from './api'
 import { ProductPageProps } from './page.types'
 import { Metadata } from 'next'
+import { AddToCartButton } from '@components/shared/addToCartButton'
 
 export const generateMetadata = async ({
   params,
@@ -80,9 +81,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </div>
           </div>
         </div>
-        <button className="flex h-12 w-full items-center justify-center rounded-full bg-emerald-500 font-semibold text-white transition hover:bg-opacity-70">
-          Adicionar ao carrinho
-        </button>
+        <AddToCartButton productId={product.id} />
       </section>
     </main>
   )

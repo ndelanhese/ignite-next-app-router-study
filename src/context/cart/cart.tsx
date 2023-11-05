@@ -8,7 +8,7 @@ export const CartContext = createContext({} as CartContextType)
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  const addItemToCart = useCallback((productId: string) => {
+  const addItemToCart = useCallback((productId: number) => {
     setCartItems((prev) => {
       const productInCart = prev.some((item) => item.productId === productId)
 
