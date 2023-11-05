@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton/skeleton'
+import { Skeleton } from '@components/ui/skeleton/skeleton'
 
 const HomeLoading = () => (
   <main className="grid-rows-9 grid max-h-[51rem] grid-cols-9 gap-6">

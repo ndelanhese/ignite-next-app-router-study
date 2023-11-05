@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useCallback, useMemo, useState } from 'react'
 import { CartContextType, CartItem, CartProviderProps } from './cart.types'
 

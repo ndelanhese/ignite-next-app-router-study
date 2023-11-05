@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     template: '%s | devstore',
     default: 'devstore',
   },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (

@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/ui/skeleton/skeleton'
+import { Skeleton } from '@components/ui/skeleton/skeleton'
 
 const HomeLoading = () => (
   <main className="grid grid-cols-3 justify-between gap-6">
