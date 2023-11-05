@@ -1,6 +1,17 @@
 import NextImage from 'next/image'
 import { getProduct } from './api'
 import { ProductPageProps } from './page.types'
+import { Metadata } from 'next'
+
+export const generateMetadata = async ({
+  params,
+}: ProductPageProps): Promise<Metadata> => {
+  const product = await getProduct(params.slug)
+
+  return {
+    title: product.title,
+  }
+}
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug)

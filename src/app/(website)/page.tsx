@@ -2,6 +2,11 @@ import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { getFeaturedProducts } from './api'
 import { nanoid } from 'nanoid'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home',
+}
 
 const Home = async () => {
   const [highlightedProduct, ...otherProducts] = await getFeaturedProducts()

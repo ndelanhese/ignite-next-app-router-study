@@ -1,11 +1,15 @@
 import React from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
-export const metadata = {
-  title: 'Dev Store',
+export const metadata: Metadata = {
+  title: {
+    template: '%s | devstore',
+    default: 'devstore',
+  },
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
