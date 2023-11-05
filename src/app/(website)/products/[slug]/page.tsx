@@ -1,5 +1,5 @@
 import NextImage from 'next/image'
-import { getProduct } from './api'
+import { getFeaturedProducts, getProduct } from './api'
 import { ProductPageProps } from './page.types'
 import { Metadata } from 'next'
 
@@ -12,6 +12,14 @@ export const generateMetadata = async ({
     title: product.title,
   }
 }
+
+// Esse é um método que gera paginas dinâmicas baseados em slug conhecidos
+// export const generateStaticParams = async () => {
+//   const featuredProducts = await getFeaturedProducts()
+//   return featuredProducts.map((product) => ({
+//     slug: product.slug,
+//   }))
+// }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug)
