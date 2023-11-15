@@ -2,7 +2,6 @@
 import { ImageResponse } from 'next/og'
 import { ProductPageProps } from './page.types'
 import { getProduct } from './api'
-import { env } from '@env'
 import colors from 'tailwindcss/colors'
 
 export const runtime = 'edge'
@@ -15,10 +14,13 @@ export const size = {
 
 export const contentType = 'image/png'
 
-export default async function OgImage({ params }: ProductPageProps) {
+const OgImage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug)
 
-  const productImageURL = new URL(product.image, env.APP_BASE_URL).toString()
+  const productImageURL = new URL(
+    product.image,
+    process.env.APP_BASE_URL,
+  ).toString()
 
   return new ImageResponse(
     (
@@ -39,3 +41,5 @@ export default async function OgImage({ params }: ProductPageProps) {
     },
   )
 }
+
+export default OgImage
